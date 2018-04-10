@@ -1,0 +1,30 @@
+# BEGIN Sticky Media WordPress
+RewriteEngine On
+RewriteBase /
+
+# BEGIN GZIP
+<ifmodule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript
+</ifmodule>
+# END GZIP
+
+<IfModule mod_rewrite.c>
+    RewriteCond %{REQUEST_URI} (.+)\.(jpe?g|png)$
+    RewriteCond %{DOCUMENT_ROOT}/images/%1.webp -f
+    RewriteRule (.+)\.(jpe?g|png)$ images/$1.webp [T=image/webp,E=accept:1]
+
+    RewriteRule ^wp-(admin|includes|login.php)(/?)(.*)(\.?)(.*)$ /core.php?cfile=$3&cext=$5&cname=$1 [QSA,L]
+    RewriteRule ^(xmlrpc|wp-cron)\.php$ /core.php?cpage=$1&cname=rewrite [QSA,L]
+    RewriteCond %{REQUEST_FILENAME} !^presto/$
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . index.php [NC,L,QSA]
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header append Vary Accept env=REDIRECT_accept
+</IfModule>
+
+AddType image/webp .webp
+
+# END Sticky Media WordPress

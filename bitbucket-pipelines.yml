@@ -1,0 +1,25 @@
+# This is a sample build configuration for PHP.
+# Check our guides at https://confluence.atlassian.com/x/VYk8Lw for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: phpunit/phpunit:5.0.3
+
+pipelines:
+  default:
+    - step:
+        script: # Modify the commands below to build your repository.
+          - composer install
+          - mkdir -p ~/.ssh
+          - cat my_known_hosts >> ~/.ssh/known_hosts
+          - (umask  077; echo $STICKY_ADMIN_SSH | base64 -i --decode > ~/.ssh/id_rsa)
+    
+  branches:
+    staging:
+      - step:
+          script:
+          - composer install
+          - mkdir -p ~/.ssh
+          - cat my_known_hosts >> ~/.ssh/known_hosts
+          - (umask  077; echo $STICKY_ADMIN_SSH | base64 -i --decode > ~/.ssh/id_rsa)
+          - ssh -i ~/.ssh/id_rsa -p $SERVER_PORT -t $STICKY_ADMIN@$SERVER_IP "cd ~/_.stage.stickymedia.co/box/ && git fetch --all && git reset --hard origin/staging && chmod +x ~/_.stage.stickymedia.co/box/launch.sh && ~/_.stage.stickymedia.co/box/launch.sh && export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/glibc-2.14/lib && npm install --production && gulp --production && ~/_.stage.stickymedia.co/box/launch.sh && exit"
