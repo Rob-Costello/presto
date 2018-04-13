@@ -41,7 +41,7 @@
     <div class="login-box">
         <div class="white-box">
             <form class="form-horizontal form-material" id="loginform" action="/presto/" method="post">
-                <h3 class="box-title m-b-20"><img src="/presto/images/quotes-per-hour-logo.svg" style="width: 260px; margin: 0 auto; display: block;"></h3>
+                <h3 class="box-title m-b-20"><img src="/images/presto-logo.svg" style="width: 260px; margin: 0 auto; display: block;"></h3>
                 <div class="form-group ">
                     <div class="col-xs-12">
                         <input class="form-control" name="username" type="text" required="" placeholder="Username">

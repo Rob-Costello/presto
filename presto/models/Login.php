@@ -38,7 +38,7 @@ class login extends CI_Model{
     function logout(){
         // logout
         $this->ion_auth->logout();
-        header('Location: /rt/secure/');
+        header('Location: /presto/');
     }
 
     function change_password($user_id, $current, $new, $confirm, $identity){

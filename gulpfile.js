@@ -88,10 +88,10 @@ gulp.task('secure_styles', function() {
         paths.bower + '/dropify/dist/css/dropify.css',
         paths.bower + '/select2/dist/css/select2.min.css',
         paths.bower + '/switchery/dist/switchery.min.css',
+        paths.secure_assets + '/styles/material-design-iconic.min.css',
         paths.secure_assets + '/styles/admintemplate/animate.css',
         paths.secure_assets + '/styles/admintemplate/style.css',
-        paths.secure_assets + '/styles/admintemplate/colors/default.css',
-        paths.secure_assets + '/styles/admintemplate/material-design-iconic-font.css'
+        paths.secure_assets + '/styles/admintemplate/colors/default.css'
     ])
         .pipe(concat('base.css'))
         .pipe(uglifycss({

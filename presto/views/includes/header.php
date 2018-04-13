@@ -137,7 +137,7 @@
                 <!-- <li class="right-side-toggle"> <a class="waves-effect waves-light" href="javascript:void(0)"><i class="ti-settings"></i></a></li> -->
                 <!-- /.dropdown -->
             </ul>
-            <div class="top-left-part"><a class="logo" href="/presto/"><img src="/presto/assets/images/quotes-per-hour-logo.svg" style="width: 160px; margin-top: 6px;" alt="home" /></a></div>
+            <div class="top-left-part"><a class="logo" href="/presto/"><img src="/images/presto-logo.svg" style="width: 135px; margin-top: 6px;" alt="home" /></a></div>
         </div>
         <!-- /.navbar-header -->
         <!-- /.navbar-top-links -->
@@ -156,59 +156,33 @@
             </span> </div>
                         <!-- /input-group -->
                     </li>
-                    <li class="user-pro"> <a href="#" class="waves-effect"><img src="/presto/assets/images/user.svg" alt="user-img" class="img-circle"> <span class="hide-menu"><?php echo $user->first_name . ' ' . $user->last_name; ?><span class="fa arrow"></span></span></a>
-                        <ul class="nav nav-second-level collapse">
-                            <!-- <li><a href="javascript:void(0)"><i class="ti-user"></i> My Profile</a></li>
-                            <li><a href="javascript:void(0)"><i class="ti-wallet"></i> My Balance</a></li>
-                            <li><a href="javascript:void(0)"><i class="ti-email"></i> Inbox</a></li>
-                            <li><a href="javascript:void(0)"><i class="ti-settings"></i> A/C Setting</a></li> -->
-                            <li><a href="/presto/logout/"><i class="fa fa-power-off"></i> Logout</a></li>
-                        </ul>
-                    </li>
-                    <li class=""> <a href="/presto/dashboard/" class="waves-effect<?php if($nav == 'dashboard') echo ' active'; ?>"><i class="zmdi zmdi-view-dashboard zmdi-hc-fw fa-fw" data-icon="v"></i> <span class="hide-menu"> Dashboard </span></a>
-                    </li>
+                    <li class=""> <a href="/presto/dashboard/" class="waves-effect<?php if($nav == 'dashboard') echo ' active'; ?>"><i class="zmdi zmdi-view-dashboard zmdi-hc-fw fa-fw" data-icon="v"></i> <span class="hide-menu"> Dashboard </span></a></li>
 
-                    <li><a href="inbox.html" class="waves-effect<?php if($nav == 'website') echo ' active'; ?>"><i class="zmdi zmdi-globe-alt zmdi-hc-fw fa-fw"></i> <span class="hide-menu">Website <span class="fa arrow"></span></span></a>
+                    <li><a href="/presto/orders/" class="waves-effect<?php if($nav == 'orders') echo ' active'; ?>"><i class="zmdi zmdi-hc-fw zmdi-shopping-cart fa-fw"></i> <span class="hide-menu">Orders</span></a></li>
+
+                    <li><a href="inbox.html" class="waves-effect<?php if($nav == 'press jobs') echo ' active'; ?>"><i class="zmdi zmdi-local-printshop zmdi-hc-fw fa-fw"></i> <span class="hide-menu">Press Jobs <span class="fa arrow"></span></span></a>
                         <ul class="nav nav-second-level collapse">
-                            <li><a href="/presto/website/applications/">Applications</a></li>
-                            <li><a href="/presto/website/enquiries/">Enquiries</a></li>
-                            <li><a href="/presto/website/quotes/">Quotes</a></li>
+                            <li><a href="/presto/tab1/">Tab 1</a></li>
+                            <li><a href="/presto/tab2/">Tab 2</a></li>
                         </ul>
                     </li>
 
-                    <li><a href="inbox.html" class="waves-effect<?php if($nav == 'customers') echo ' active'; ?>"><i class="zmdi zmdi-accounts zmdi-hc-fw fa-fw"></i> <span class="hide-menu">Customers <span class="fa arrow"></span></span></a>
+                    <li><a href="inbox.html" class="waves-effect<?php if($nav == 'users') echo ' active'; ?>"><i class="zmdi zmdi-accounts zmdi-hc-fw fa-fw"></i> <span class="hide-menu">Users <span class="fa arrow"></span></span></a>
                         <ul class="nav nav-second-level collapse">
-                            <li><a href="/presto/customers/">Browse</a></li>
-                            <li><a href="/presto/customers/add/">Add</a></li>
+                            <li><a href="/presto/tab1/">Tab 1</a></li>
+                            <li><a href="/presto/tab2/">Tab 2</a></li>
                         </ul>
                     </li>
-
-                    <li><a href="inbox.html" class="waves-effect<?php if($nav == 'companies') echo ' active'; ?>"><i class="zmdi zmdi-city-alt zmdi-hc-fw fa-fw"></i> <span class="hide-menu">Companies <span class="fa arrow"></span></span></a>
+                    <li><a href="inbox.html" class="waves-effect<?php if($nav == 'system settings') echo ' active'; ?>"><i class="zmdi zmdi-settings zmdi-hc-fw fa-fw"></i> <span class="hide-menu">System Settings <span class="fa arrow"></span></span></a>
                         <ul class="nav nav-second-level collapse">
-                            <li><a href="/presto/companies/">Browse</a></li>
-                            <li><a href="/presto/companies/add/">Add</a></li>
+                            <li><a href="/presto/tab1/">Tab 1</a></li>
+                            <li><a href="/presto/tab2/">Tab 2</a></li>=
                         </ul>
                     </li>
-
-                    <!-- <li><a href="inbox.html" class="waves-effect<?php if($nav == 'calls') echo ' active'; ?>"><i class="linea-icon linea-basic fa-fw icon-phone"></i> <span class="hide-menu">Calls <span class="fa arrow"></span></span></a>
-                            <ul class="nav nav-second-level collapse">
-                                <li><a href="/qph/calls/followup/">Follow Up</a></li>
-                                <li><a href="/qph/calls/">Browse</a></li>
-                                <li><a href="/qph/calls/view/">Add</a></li>
-                            </ul>
-                        </li>-->
-                    <li><a href="inbox.html" class="waves-effect<?php if($nav == 'offers') echo ' active'; ?>"><i class="zmdi zmdi-car zmdi-hc-fw fa-fw"></i> <span class="hide-menu">Offers <span class="fa arrow"></span></span></a>
+                    <li><a href="inbox.html" class="waves-effect<?php if($nav == 'reports') echo ' active'; ?>"><i class="zmdi zmdi-chart zmdi-hc-fw fa-fw"></i> <span class="hide-menu">Reports <span class="fa arrow"></span></span></a>
                         <ul class="nav nav-second-level collapse">
-                            <li><a href="/presto/offers/">Browse</a></li>
-                            <li><a href="/presto/offers/add/">Add</a></li>
-                            <li><a href="/presto/offers/needMatching">Need Matching</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="inbox.html" class="waves-effect<?php if($nav == 'feeds') echo ' active'; ?>"><i class="zmdi zmdi-rss zmdi-hc-fw fa-fw"></i> <span class="hide-menu">Feeds <span class="fa arrow"></span></span></a>
-                        <ul class="nav nav-second-level collapse">
-                            <li><a href="/presto/feeds/status/">Status</a></li>
-                            <li><a href="/presto/feeds/import/">Import</a></li>
-                            <li><a href="/presto/feeds/export/">Export</a></li>
+                            <li><a href="/presto/tab1/">Tab 1</a></li>
+                            <li><a href="/presto/tab2/">Tab 2</a></li>
                         </ul>
                     </li>
                     <li><a href="/presto/logout/" class="waves-effect"><i class="zmdi zmdi-power zmdi-hc-fw fa-fw"></i> <span class="hide-menu">Log out</span></a></li>

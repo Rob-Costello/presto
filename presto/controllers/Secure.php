@@ -11,12 +11,10 @@ class secure extends CI_Controller{
         // get current URL
         $data['current_url'] = $this->uri->uri_string();
 
-        $data['messages'] = $this->messages->get_messages();
-        $data['errors'] = $this->messages->get_errors();
-
         if($this->input->post('username')){
             $this->login->login_user();
         }
+
 
         if($this->login->login_check()){
 
@@ -33,7 +31,7 @@ class secure extends CI_Controller{
 
             if($this->input->post('username')) {
 
-                $data['error']['messages'][] = '<strong>Login failed!</strong> Please check your username and password.';
+                $this->messages->set_error('<strong>Login failed!</strong> Please check your username and password.');
 
             } elseif( $this->input->post('email') ) {
 
@@ -43,7 +41,7 @@ class secure extends CI_Controller{
                 if ($forgotten) { //if there were no errors
 
                     $return['user'] = $this->sa_db->get_user('forgotten_password_code = "'.$forgotten['forgotten_password_code'].'"');
-                    $data['message']['messages'][] = '<strong>Success!</strong> We have sent you an email to reset your password.';
+                    $this->messages->set_message('<strong>Success!</strong> We have sent you an email to reset your password.');
                     $this->load->library('email');
                     $config = array (
                         'mailtype' => 'html',
@@ -63,11 +61,15 @@ class secure extends CI_Controller{
 
                 } else {
 
-                    $data['error']['messages'][] = '<strong>Error!</strong> '.$this->ion_auth->errors();
+                    $this->messages->set_error('<strong>Error!</strong> '.$this->ion_auth->errors());
 
                 }
 
             }
+
+            $data['messages'] = $this->messages->get_messages();
+            $data['errors'] = $this->messages->get_errors();
+
             $this->load->view('pages/login', $data);
 
         }
