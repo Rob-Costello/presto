@@ -41,7 +41,6 @@
                                 <li><a href="#section-bar-2" class="sticon icon-note"><span>Extra Details</span></a></li>
                                 <li><a href="#section-bar-3" class="sticon icon-calculator"><span>History</span></a></li>
                                 <li><a href="#section-bar-4" class="sticon icon-docs"><span>Notes</span></a></li>
-
                             </ul>
                         </nav>
                         <div class="panel-wrapper collapse in" aria-expanded="true">

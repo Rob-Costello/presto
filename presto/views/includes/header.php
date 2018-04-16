@@ -160,12 +160,7 @@
 
                     <li><a href="/presto/orders/" class="waves-effect<?php if($nav == 'orders') echo ' active'; ?>"><i class="zmdi zmdi-hc-fw zmdi-shopping-cart fa-fw"></i> <span class="hide-menu">Orders</span></a></li>
 
-                    <li><a href="inbox.html" class="waves-effect<?php if($nav == 'press jobs') echo ' active'; ?>"><i class="zmdi zmdi-local-printshop zmdi-hc-fw fa-fw"></i> <span class="hide-menu">Press Jobs <span class="fa arrow"></span></span></a>
-                        <ul class="nav nav-second-level collapse">
-                            <li><a href="/presto/tab1/">Tab 1</a></li>
-                            <li><a href="/presto/tab2/">Tab 2</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="/presto/jobs/" class="waves-effect<?php if($nav == 'press jobs') echo ' active'; ?>"><i class="zmdi zmdi-local-printshop zmdi-hc-fw fa-fw"></i> <span class="hide-menu">Press Jobs</span></a></li>
 
                     <li><a href="inbox.html" class="waves-effect<?php if($nav == 'users') echo ' active'; ?>"><i class="zmdi zmdi-accounts zmdi-hc-fw fa-fw"></i> <span class="hide-menu">Users <span class="fa arrow"></span></span></a>
                         <ul class="nav nav-second-level collapse">
