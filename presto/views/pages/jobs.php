@@ -7,7 +7,7 @@
             <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                 <ol class="breadcrumb">
                     <li><a href="#">Dashboard</a></li>
-                    <li class="active">Orders</li>
+                    <li class="active">Press Jpbs</li>
                 </ol>
             </div>
             <!-- /.col-lg-12 -->
@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="white-box">
-                    <h4 class="card-title">Order Management</h4>
+                    <h4 class="card-title">Press Job Management</h4>
 
                     <div class="table-responsive m-t-40">
                         <div id="example23_wrapper" class="dataTables_wrapper">
