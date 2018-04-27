@@ -7,7 +7,7 @@
     <meta name='robots' content='noindex,nofollow' />
 
     <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/favicon.png">
-    <title>Quotes Per Hour Software</title>
+    <title>Presto - Login</title>
 
     <link rel='stylesheet' href='/presto/assets/css/base.css' type='text/css' media='all' />
     <link rel='stylesheet' id='main-stylesheet-css'  href='/presto/assets/css/secure.css' type='text/css' media='all' />
@@ -25,14 +25,14 @@
         <div class="col-md-12">
             <?php if( $messages != '' ) { ?>
                 <div class="alert alert-success alert-dismissable">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">Ã—</button>
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                     <?php echo $messages; ?>
                 </div>
             <?php } ?>
 
             <?php if( $errors != '' ) { ?>
                 <div class="alert alert-danger alert-dismissable">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">Ã—</button>
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                     <?php echo $errors; ?>
                 </div>
             <?php } ?>
