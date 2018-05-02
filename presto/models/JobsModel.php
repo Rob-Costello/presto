@@ -1,4 +1,6 @@
 <?php
+use Spatie\PdfToImage;
+
 class jobsModel extends CI_Model
 {
 
@@ -70,6 +72,9 @@ class jobsModel extends CI_Model
         );
 
         $this->db->insert('presto_jobs_artwork', $data);
+
+        $pdf1 = new PdfToImage\Pdf($data['full_path']);
+        $pdf1->setResolution(400)->saveImage($data['path'].'rendered/'.$data['raw_name'].'.jpg');
     }
 
     function getArtwork( $id ){

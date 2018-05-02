@@ -147,8 +147,7 @@ $config['subclass_prefix'] = 'MY_';
 | Note: This will NOT disable or override the CodeIgniter-specific
 |	autoloading (application/config/autoload.php)
 */
-$config['composer_autoload'] = FALSE;
-
+$config['composer_autoload'] = dirname($_SERVER['DOCUMENT_ROOT']) . '/vendor/autoload.php';
 /*
 |--------------------------------------------------------------------------
 | Allowed URL Characters
@@ -522,6 +521,10 @@ $config['rewrite_short_tags'] = FALSE;
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = '';
+
+$config['upload_path'] = dirname($_SERVER['DOCUMENT_ROOT']) . '/presto/uploads/';
+$config['allowed_types'] = '*';
+$config['max_size'] = 10000;
 
 foreach(glob(FCPATH.'config/codeigniter/*.php') as $cfg){
     require_once($cfg);

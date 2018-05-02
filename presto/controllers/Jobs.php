@@ -1,5 +1,7 @@
 <?php
 
+use Spatie\PdfToImage;
+
 class jobs extends CI_Controller{
 
     var $user = array();
@@ -45,7 +47,7 @@ class jobs extends CI_Controller{
         $this->load->view('pages/job_view', $data);
     }
 
-    function view( $jobID ){
+    function view( $jobID, $action = null ){
 
         $job = new jobsModel();
 
@@ -55,9 +57,15 @@ class jobs extends CI_Controller{
 
         }
 
-        $config['upload_path'] = $_SERVER["DOCUMENT_ROOT"] .'/../presto/uploads/';
-        $config['allowed_types'] = '*';
-        $config['max_size'] = 10000;
+        if( $action !== null ){
+
+            $this->$action($jobID);
+
+        }
+
+        $config['upload_path'] = $this->uploadPath($this->config->item('upload_path'),$jobID );
+        $config['allowed_types'] = $this->config->item('allowed_types');
+        $config['max_size'] = $this->config->item('max_size');
         $this->load->library('upload', $config);
 
         if( !empty($_FILES) ) {
@@ -83,6 +91,97 @@ class jobs extends CI_Controller{
         $data['messages'] = $this->messages->get_messages();
         $data['errors'] = $this->messages->get_errors();
         $this->load->view('pages/job_view', $data);
+    }
+
+    function gen21Up($jobID){
+
+        $this->load->model('pdfModel');
+        $this->load->model('artworkModel');
+        $this->load->helper('download');
+
+        $arkworkModel = new artworkModel();
+
+        $jobArtwork = $arkworkModel->getJobArtworkByID($jobID);
+        $file = $jobArtwork['data'][0]->path . 'rendered/' . $jobArtwork['data'][0]->raw_name . '.jpg';
+
+
+        //Get JPG image contents
+        $image = imagecreatefromstring(file_get_contents($file));
+
+        //Get 21 up PDF template
+        $str=file_get_contents($this->config->item('upload_path').'organised.txt');
+
+        //Put 1up in position in 21 up PDF temaplate
+        $pdfModel = new pdfModel();
+        $pdfFrontPlacementArray = array(
+            'PLACEHOLDERA',
+            'PLACEHOLDERB',
+            'PLACEHOLDERC',
+            'PLACEHOLDERD',
+            'PLACEHOLDERE',
+            'PLACEHOLDERF',
+            'PLACEHOLDERG',
+            'PLACEHOLDERH',
+            'PLACEHOLDERI',
+            'PLACEHOLDERJ',
+            'PLACEHOLDERK',
+            'PLACEHOLDERL',
+            'PLACEHOLDERM',
+            'PLACEHOLDERN',
+            'PLACEHOLDERO',
+            'PLACEHOLDERP',
+            'PLACEHOLDERQ',
+            'PLACEHOLDERR',
+            'PLACEHOLDERS',
+            'PLACEHOLDERT',
+            'PLACEHOLDERU'
+        );
+
+        $imageFrontPlacementArray = array(
+            $pdfModel->streamfromimage($image),
+            $pdfModel->streamfromimage($image),
+            $pdfModel->streamfromimage($image),
+            $pdfModel->streamfromimage($image),
+            $pdfModel->streamfromimage($image),
+            $pdfModel->streamfromimage($image),
+            $pdfModel->streamfromimage($image),
+            $pdfModel->streamfromimage($image),
+            $pdfModel->streamfromimage($image),
+            $pdfModel->streamfromimage($image),
+            $pdfModel->streamfromimage($image),
+            $pdfModel->streamfromimage($image),
+            $pdfModel->streamfromimage($image),
+            $pdfModel->streamfromimage($image),
+            $pdfModel->streamfromimage($image),
+            $pdfModel->streamfromimage($image),
+            $pdfModel->streamfromimage($image),
+            $pdfModel->streamfromimage($image),
+            $pdfModel->streamfromimage($image),
+            $pdfModel->streamfromimage($image),
+            $pdfModel->streamfromimage($image)
+        );
+
+        $str=str_replace($pdfFrontPlacementArray, $imageFrontPlacementArray, $str);
+
+        //generate output
+        file_put_contents($this->config->item('upload_path').'organised-out.pdf', $str);
+        force_download($this->config->item('upload_path').'organised-out.pdf', NULL);
+
+
+    }
+
+    function uploadPath( $uploadsPath, $jobID ){
+
+        $fullPath = $uploadsPath . $jobID . '/';
+
+        if(!is_dir($fullPath)) {
+            mkdir($fullPath);
+            chmod($fullPath, 0777);
+            mkdir($fullPath.'rendered/');
+            chmod($fullPath.'rendered/', 0777);
+        }
+        return $fullPath;
+
     }
 
 }
