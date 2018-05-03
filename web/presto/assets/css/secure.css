@@ -37,3 +37,4 @@ table.dataTable thead .sorting:after{content:"\f0dc";margin-left:10px;font-famil
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover{color:white;border:1px solid #00a6cd;background-color:#00a6cd}
 .dataTables_wrapper .dataTables_paginate .paginate_button:active{outline:0;background-color:#212529}
 .dataTables_wrapper .dataTables_paginate .ellipsis{padding:0 1em}.tabs-style-bar nav ul li.tab-current a{background:#00a6cd}
+.paginate_button{margin:0 2px}.paginate_button a{color:#212529 !important}.paginate_button:hover a{color:#fff !important}

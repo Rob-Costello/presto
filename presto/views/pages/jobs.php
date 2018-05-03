@@ -59,14 +59,19 @@
                                     <tr role="row" class="odd">
                                         <td class="sorting_1"><?php echo $job->id; ?></td>
                                         <td><?php echo $job->customer_name; ?></td>
-                                        <td>David Wright</td>
+                                        <td><?php echo $job->createdBy; ?></td>
                                         <td><?php echo $job->datetime; ?></td>
                                         <td>N/A</td>
                                         <td><a href="/presto/jobs/view/<?php echo $job->id; ?>/"><i class="zmdi zmdi-edit zmdi-hc-fw"></i></a></td>
                                     </tr>
                                 <?php } ?>
                                 </tbody>
-                            </table><div class="dataTables_info" id="example23_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div><div class="dataTables_paginate paging_simple_numbers" id="example23_paginate"><a class="paginate_button previous disabled" aria-controls="example23" data-dt-idx="0" tabindex="0" id="example23_previous">Previous</a><span><a class="paginate_button current" aria-controls="example23" data-dt-idx="1" tabindex="0">1</a><a class="paginate_button " aria-controls="example23" data-dt-idx="2" tabindex="0">2</a><a class="paginate_button " aria-controls="example23" data-dt-idx="3" tabindex="0">3</a><a class="paginate_button " aria-controls="example23" data-dt-idx="4" tabindex="0">4</a><a class="paginate_button " aria-controls="example23" data-dt-idx="5" tabindex="0">5</a><a class="paginate_button " aria-controls="example23" data-dt-idx="6" tabindex="0">6</a></span><a class="paginate_button next" aria-controls="example23" data-dt-idx="7" tabindex="0" id="example23_next">Next</a></div></div>
+                            </table>
+                            <div class="dataTables_info" id="example23_info" role="status" aria-live="polite">Showing <?php echo $pagination_start; ?> to <?php echo $pagination_end; ?> of <?php $jobs['count']; ?> entries</div>
+                            <div class="dataTables_paginate paging_simple_numbers">
+                                <?php echo $pagination; ?>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -37,9 +37,11 @@
                 <section>
                             <div class="panel-body">
                                 <div class="content-wrap">
+                                    <?php if(isset($job)){ ?>
                                     <div class="button-box">
-                                        <button type="button" class="btn btn-outline btn-default waves-effect waves-light"> <i class="fa fa-cube m-r-5"></i> <span>Create 21 up</span></button>
+                                        <button type="button" class="btn btn-outline btn-default waves-effect waves-light" onclick="location.href='/presto/jobs/view/<?php echo $job->id;  ?>/gen21Up/';"> <i class="fa fa-cube m-r-5"></i> <span>Create 21 up</span></button>
                                     </div>
+                                    <?php } ?>
                                     <section id="section-bar-1" class="content-current">
                                             <div class="form-body">
                                                 <div class="row">
