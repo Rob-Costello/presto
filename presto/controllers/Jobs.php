@@ -66,8 +66,9 @@ class jobs extends CI_Controller{
         $job = new jobsModel();
 
         if( !empty($_POST) ) {
-
-            $id = $job->insertJob($this->input->post());
+            $jobData = $this->input->post();
+            $jobData['user_id'] = $this->user->id;
+            $id = $job->insertJob($jobData);
             header('Location: /presto/jobs/view/'.$id);
 
         }

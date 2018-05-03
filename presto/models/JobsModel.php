@@ -7,8 +7,9 @@ class jobsModel extends CI_Model
     function getJobs($where = null, $request = null, $limit = null, $offset = null)
     {
 
-        $this->db->select('*');
+        $this->db->select('*, CONCAT(u.first_name, " ", u.last_name) AS createdBy ');
         $this->db->limit($limit, $offset);
+        $this->db->join('presto_users u', 'u.id = presto_jobs.user_id');
         if( $where == null ) {
             $query = $this->db->get('presto_jobs');
             $count = $this->db->from('presto_jobs')->count_all_results();

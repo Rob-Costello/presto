@@ -59,7 +59,7 @@
                                     <tr role="row" class="odd">
                                         <td class="sorting_1"><?php echo $job->id; ?></td>
                                         <td><?php echo $job->customer_name; ?></td>
-                                        <td>David Wright</td>
+                                        <td><?php echo $job->createdBy; ?></td>
                                         <td><?php echo $job->datetime; ?></td>
                                         <td>N/A</td>
                                         <td><a href="/presto/jobs/view/<?php echo $job->id; ?>/"><i class="zmdi zmdi-edit zmdi-hc-fw"></i></a></td>
