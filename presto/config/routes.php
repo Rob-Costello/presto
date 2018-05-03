@@ -51,6 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['logout'] = "secure/logout";
 $route['passwordReset'] = "secure/PasswordReset";
+$route['(:any)/(:num)'] = "$1/index/$2";
 $route['presto/(:any)'] = "$1";
 $route['default_controller'] = 'secure';
 

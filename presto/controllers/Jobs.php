@@ -17,11 +17,44 @@ class jobs extends CI_Controller{
         $this->user = $this->ion_auth->user()->row();
     }
 
-    function index()
+    function index($pageNumber = null)
     {
+        $this->load->library('pagination');
         $job = new jobsModel();
+        $perPage = 1;
+        $offset = 0;
 
-        $data['jobs'] = $job->getJobs();
+        if($pageNumber > 0){
+            $offset = $pageNumber * $perPage;
+        }
+
+        $data['jobs'] = $job->getJobs(null, null, $perPage, $offset);
+
+        $pagConfig['base_url'] = '/presto/jobs/';
+        $pagConfig['total_rows'] = $data['jobs']['count'];
+        $pagConfig['per_page'] = $perPage;
+
+        $pagConfig['num_tag_open'] = '<li class="paginate_button">';
+        $pagConfig['num_tag_close'] = '</li>';
+        $pagConfig['cur_tag_open'] = '<li class="paginate_button current">';
+        $pagConfig['cur_tag_close'] = '</li>';
+
+        $pagConfig['prev_link'] = 'Previous';
+        $pagConfig['prev_tag_open'] = '<li class="paginate_button previous">';
+        $pagConfig['prev_tag_close'] = '</li>';
+
+        $pagConfig['next_link'] = 'Next';
+        $pagConfig['next_tag_open'] = '<li class="paginate_button next">';
+        $pagConfig['next_tag_close'] = '</li>';
+
+        $this->pagination->initialize($pagConfig);
+
+        $data['pagination_start'] = $offset + 1;
+        $data['pagination_end'] = $data['pagination_start'] + $perPage;
+        if($data['pagination_end'] > $data['jobs']['count']) {
+            $data['pagination_end'] = $data['jobs']['count'];
+        }
+        $data['pagination'] = $this->pagination->create_links();
         $data['user'] = $this->user;
         $data['title'] = 'Press Jobs';
         $data['nav'] = 'press jobs';
