@@ -21,7 +21,7 @@ class jobs extends CI_Controller{
     {
         $this->load->library('pagination');
         $job = new jobsModel();
-        $perPage = 1;
+        $perPage = 10;
         $offset = 0;
 
         if($pageNumber > 0){
