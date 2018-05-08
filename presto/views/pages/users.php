@@ -19,7 +19,7 @@
                     <div class="row">
                         <h4 class="card-title col-sm-9">User Management</h4>
                         <div class="button-box col-sm-3">
-                            <button class="btn btn-info waves-effect waves-light" style="float: right;" onclick="location.href='add/';"> <i class="fa fa-plus m-r-5"></i> <span>Create New User</span></button>
+                            <button class="btn btn-info waves-effect waves-light" style="float: right;" onclick="location.href='#';"> <i class="fa fa-plus m-r-5"></i> <span>Create New User</span></button>
                         </div>
                     </div>
                     <div class="table-responsive m-t-40">
