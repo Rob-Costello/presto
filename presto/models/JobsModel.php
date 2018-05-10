@@ -98,6 +98,7 @@ class jobsModel extends CI_Model
 
     function getOutputByJobID( $id ){
 
+        $this->db->select('*, presto_jobs_outputs.id AS id ');
         $this->db->order_by('datetime', 'DESC');
         $this->db->join('presto_users', 'presto_users.id = presto_jobs_outputs.user_id');
         $query = $this->db->get_where('presto_jobs_outputs', 'job_id = ' . $id );
