@@ -87,7 +87,16 @@ class jobsModel extends CI_Model
 
     }
 
-    function getOutput( $id ){
+    function getOutputByID( $id ){
+
+        $this->db->order_by('datetime', 'DESC');
+        $this->db->join('presto_users', 'presto_users.id = presto_jobs_outputs.user_id');
+        $query = $this->db->get_where('presto_jobs_outputs', 'presto_jobs_outputs.id = ' . $id );
+        return $query->result();
+
+    }
+
+    function getOutputByJobID( $id ){
 
         $this->db->order_by('datetime', 'DESC');
         $this->db->join('presto_users', 'presto_users.id = presto_jobs_outputs.user_id');
@@ -99,7 +108,7 @@ class jobsModel extends CI_Model
     function downloadOutputByID( $id ){
 
         $this->load->helper('download');
-        $output = $this->getOutput($id);
+        $output = $this->getOutputByID($id);
         force_download($output[0]->full_path, NULL);
 
     }

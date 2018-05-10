@@ -126,7 +126,7 @@ class jobs extends CI_Controller{
 
         $data['job'] = $job->getJob( $jobID );
         $data['artwork'] = $job->getArtwork( $jobID );
-        $data['outputs'] = $job->getOutput( $jobID );
+        $data['outputs'] = $job->getOutputByJobID( $jobID );
         $data['user'] = $this->user;
         $data['title'] = 'Jobs';
         $data['nav'] = 'jobs';
