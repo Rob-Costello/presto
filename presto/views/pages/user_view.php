@@ -116,7 +116,7 @@
                                                                 <div class="col-md-offset-3 col-md-9">
                                                                     <input hidden="hidden" name="form" value="customer">
                                                                     <button type="submit" class="btn btn-success">Save</button>
-                                                                    <button type="button" onclick="location.href='/secure/customers/';" class="btn btn-default">Cancel</button>
+                                                                    <button type="button" onclick="location.href='/presto/users/';" class="btn btn-default">Cancel</button>
                                                                 </div>
                                                             </div>
                                                         </div>
