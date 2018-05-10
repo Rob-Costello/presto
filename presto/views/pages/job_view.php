@@ -57,7 +57,7 @@
                                                         <div class="row">
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
-                                                                    <label class="control-label col-md-3">Title</label>
+                                                                    <label class="control-label col-md-3">Job Title</label>
                                                                     <div class="col-md-9">
                                                                         <input type="text" name="title" class="form-control" value="<?php if(isset($job->title)) echo $job->title; ?>" autocomplete="off">
                                                                     </div>

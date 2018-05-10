@@ -36,7 +36,8 @@
                                 <thead>
                                 <tr role="row">
                                     <th class="sorting_asc" tabindex="0" aria-controls="example23" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 120px;">Job ID</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example23" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 180px;">Description</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example23" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 180px;">Customer Name</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example23" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 180px;">Job Title</th>
                                     <th class="sorting" tabindex="0" aria-controls="example23" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 55px;">Created By</th>
                                     <th class="sorting" tabindex="0" aria-controls="example23" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 89px;">Created Date</th>
                                     <th class="sorting" tabindex="0" aria-controls="example23" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 92px;">Status</th>
@@ -47,6 +48,7 @@
                                 <tr>
                                     <th rowspan="1" colspan="1">Job ID</th>
                                     <th rowspan="1" colspan="1">Customer Name</th>
+                                    <th rowspan="1" colspan="1">Job Title</th>
                                     <th rowspan="1" colspan="1">Created By</th>
                                     <th rowspan="1" colspan="1">Created Date</th>
                                     <th rowspan="1" colspan="1">Status</th>
@@ -59,6 +61,7 @@
                                     <tr role="row" class="odd">
                                         <td class="sorting_1"><?php echo $job->id; ?></td>
                                         <td><?php echo $job->customer_name; ?></td>
+                                        <td><?php echo $job->title; ?></td>
                                         <td><?php echo $job->createdBy; ?></td>
                                         <td><?php echo $job->datetime; ?></td>
                                         <td>N/A</td>
