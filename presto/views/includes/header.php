@@ -162,11 +162,7 @@
 
                     <li><a href="/presto/jobs/" class="waves-effect<?php if($nav == 'press jobs') echo ' active'; ?>"><i class="zmdi zmdi-local-printshop zmdi-hc-fw fa-fw"></i> <span class="hide-menu">Press Jobs</span></a></li>
 
-                    <li><a href="inbox.html" class="waves-effect<?php if($nav == 'users') echo ' active'; ?>"><i class="zmdi zmdi-accounts zmdi-hc-fw fa-fw"></i> <span class="hide-menu">Users <span class="fa arrow"></span></span></a>
-                        <ul class="nav nav-second-level collapse">
-                            <li><a href="/presto/tab1/">Tab 1</a></li>
-                            <li><a href="/presto/tab2/">Tab 2</a></li>
-                        </ul>
+                    <li><a href="/presto/users/" class="waves-effect<?php if($nav == 'users') echo ' active'; ?>"><i class="zmdi zmdi-accounts zmdi-hc-fw fa-fw"></i> <span class="hide-menu">Users></span></a>
                     </li>
                     <li><a href="inbox.html" class="waves-effect<?php if($nav == 'system settings') echo ' active'; ?>"><i class="zmdi zmdi-settings zmdi-hc-fw fa-fw"></i> <span class="hide-menu">System Settings <span class="fa arrow"></span></span></a>
                         <ul class="nav nav-second-level collapse">

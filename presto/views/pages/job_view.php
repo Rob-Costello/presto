@@ -31,138 +31,194 @@
     </div>
     <!--.row-->
         <form method="POST" class="form-horizontal" enctype="multipart/form-data">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-info">
-                <section>
-                            <div class="panel-body">
-                                <div class="content-wrap">
-                                    <?php if(isset($job)){ ?>
-                                    <div class="button-box">
-                                        <button type="button" class="btn btn-outline btn-default waves-effect waves-light" onclick="location.href='/presto/jobs/view/<?php echo $job->id;  ?>/gen21Up/';"> <i class="fa fa-cube m-r-5"></i> <span>Create 21 up</span></button>
-                                    </div>
-                                    <?php } ?>
-                                    <section id="section-bar-1" class="content-current">
-                                            <div class="form-body">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Title</label>
-                                                            <div class="col-md-9">
-                                                                <input type="text" name="title" class="form-control" value="<?php if(isset($job->title)) echo $job->title; ?>" autocomplete="off">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Customer</label>
-                                                            <div class="col-md-9">
-                                                                <input type="text" name="customer_name" class="form-control" value="<?php if(isset($job->customer_name)) echo $job->customer_name; ?>" autocomplete="off" >
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!--/span-->
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Press Filename</label>
-                                                            <div class="col-md-9">
-                                                                <input type="tel" name="filename" class="form-control" value="<?php if(isset($job->filename)) echo $job->filename; ?>" autocomplete="off">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!--/span-->
-                                                </div>
 
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Template</label>
-                                                            <div class="col-md-9">
-                                                                <select class="form-control" name="template">
-                                                                    <option <?php if(isset($job->template)  && $job->template == '92 x 60 Plastic Card (Landscape)') { ?>selected<?php } ?>>92 x 60 Plastic Card (Landscape)</option>
-                                                                    <option <?php if(isset($job->template)  && $job->template == '92 x 60 Plastic Card (Portrait)') { ?>selected<?php } ?>>92 x 60 Plastic Card (Portrait)</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Single / Double Sided</label>
-                                                            <div class="col-md-9">
-                                                                <select class="form-control" name="sides">
-                                                                    <option <?php if(isset($job->sides)  && $job->sides == 'Single Sided') { ?>selected<?php } ?>>Single Sided</option>
-                                                                    <option <?php if(isset($job->sides)  && $job->sides == 'Double Sided') { ?>selected<?php } ?>>Double Sided</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!--/span-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-info">
+                        <section>
+                            <div class="sttabs tabs-style-bar">
+                                <nav>
+                                    <ul>
+                                        <li class="tab-current"><a href="#section-bar-1" class="sticon icon-user"><span>Job Details</span></a></li>
+                                        <li><a href="#section-bar-2" class="sticon icon-note"><span>Outputs</span></a></li>
+
+                                    </ul>
+                                </nav>
+                                <div class="panel-wrapper collapse in" aria-expanded="true">
+                                    <div class="panel-body">
+                                        <div class="content-wrap">
+                                            <?php if(isset($job)){ ?>
+                                                <div class="button-box">
+                                                    <button type="button" class="btn btn-outline btn-default waves-effect waves-light" onclick="location.href='/presto/jobs/view/<?php echo $job->id;  ?>/gen21Up/';"> <i class="fa fa-cube m-r-5"></i> <span>Create 21 up</span></button>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Proof Sheet</label>
-                                                            <div class="col-md-9">
-                                                                <select class="form-control" name="proof_sheet">
-                                                                    <option <?php if(isset($job->proof_sheet)  && $job->proof_sheet == 'Standard') { ?>selected<?php } ?>>Standard</option>
-                                                                    <option <?php if(isset($job->proof_sheet)  && $job->proof_sheet == 'No Header') { ?>selected<?php } ?>>No Header</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <div class="col-md-9 offset-md-3">
-                                                                <div class="form-check" style="margin-left: 190px;">
-                                                                    <label class="custom-control custom-checkbox">
-                                                                        <input type="hidden" name="full_sheet" value="0" />
-                                                                        <input type="checkbox" class="custom-control-input" name="full_sheet" value="1" <?php if(isset($job->full_sheet) && $job->full_sheet == 1) { ?>checked<?php } ?>>
-                                                                        <span class="custom-control-indicator"></span>
-                                                                        <span class="custom-control-description">Full sheet per record</span>
-                                                                    </label>
-                                                                    <label class="custom-control custom-checkbox">
-                                                                        <input type="hidden" name="one_press" value="0" />
-                                                                        <input type="checkbox" class="custom-control-input" name="one_press" value="1" <?php if(isset($job->one_press) && $job->one_press == 1) { ?>checked<?php } ?>>
-                                                                        <span class="custom-control-indicator"></span>
-                                                                        <span class="custom-control-description">One Press PDF per source file</span>
-                                                                    </label>
-                                                                    <label class="custom-control custom-checkbox">
-                                                                        <input type="hidden" name="compensate_for_text" value="0" />
-                                                                        <input type="checkbox" class="custom-control-input" name="compensate_for_text" value="1" <?php if(isset($job->compensate_for_text) && $job->compensate_for_text == 1) { ?>checked<?php } ?>>
-                                                                        <span class="custom-control-indicator"></span>
-                                                                        <span class="custom-control-description">Compensate for text on artwork footer</span>
-                                                                    </label>
+                                            <?php } ?>
+                                            <section id="section-bar-1" class="content-current"><form method="POST" class="form-horizontal">
+                                                    <div class="form-body">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-md-3">Job Title</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" name="title" class="form-control" value="<?php if(isset($job->title)) echo $job->title; ?>" autocomplete="off">
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                    <!--/span-->
-                                                </div>
-                                            </div>
-                                            <div class="form-actions">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="row">
-                                                            <div class="col-md-offset-3 col-md-9">
-                                                                <button type="submit" class="btn btn-success">Save</button>
-                                                                <button type="button" onclick="location.href='/presto/jobs/';" class="btn btn-default">Cancel</button>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-md-3">Customer</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" name="customer_name" class="form-control" value="<?php if(isset($job->customer_name)) echo $job->customer_name; ?>" autocomplete="off" >
+                                                                    </div>
+                                                                </div>
                                                             </div>
+                                                            <!--/span-->
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-md-3">Press Filename</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="tel" name="filename" class="form-control" value="<?php if(isset($job->filename)) echo $job->filename; ?>" autocomplete="off">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!--/span-->
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-md-3">Template</label>
+                                                                    <div class="col-md-9">
+                                                                        <select class="form-control" name="template">
+                                                                            <option <?php if(isset($job->template)  && $job->template == '92 x 60 Plastic Card (Landscape)') { ?>selected<?php } ?>>92 x 60 Plastic Card (Landscape)</option>
+                                                                            <option <?php if(isset($job->template)  && $job->template == '92 x 60 Plastic Card (Portrait)') { ?>selected<?php } ?>>92 x 60 Plastic Card (Portrait)</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-md-3">Single / Double Sided</label>
+                                                                    <div class="col-md-9">
+                                                                        <select class="form-control" name="sides">
+                                                                            <option <?php if(isset($job->sides)  && $job->sides == 'Single Sided') { ?>selected<?php } ?>>Single Sided</option>
+                                                                            <option <?php if(isset($job->sides)  && $job->sides == 'Double Sided') { ?>selected<?php } ?>>Double Sided</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!--/span-->
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-md-3">Proof Sheet</label>
+                                                                    <div class="col-md-9">
+                                                                        <select class="form-control" name="proof_sheet">
+                                                                            <option <?php if(isset($job->proof_sheet)  && $job->proof_sheet == 'Standard') { ?>selected<?php } ?>>Standard</option>
+                                                                            <option <?php if(isset($job->proof_sheet)  && $job->proof_sheet == 'No Header') { ?>selected<?php } ?>>No Header</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <div class="col-md-9 offset-md-3">
+                                                                        <div class="form-check" style="margin-left: 190px;">
+                                                                            <label class="custom-control custom-checkbox">
+                                                                                <input type="hidden" name="full_sheet" value="0" />
+                                                                                <input type="checkbox" class="custom-control-input" name="full_sheet" value="1" <?php if(isset($job->full_sheet) && $job->full_sheet == 1) { ?>checked<?php } ?>>
+                                                                                <span class="custom-control-indicator"></span>
+                                                                                <span class="custom-control-description">Full sheet per record</span>
+                                                                            </label>
+                                                                            <label class="custom-control custom-checkbox">
+                                                                                <input type="hidden" name="one_press" value="0" />
+                                                                                <input type="checkbox" class="custom-control-input" name="one_press" value="1" <?php if(isset($job->one_press) && $job->one_press == 1) { ?>checked<?php } ?>>
+                                                                                <span class="custom-control-indicator"></span>
+                                                                                <span class="custom-control-description">One Press PDF per source file</span>
+                                                                            </label>
+                                                                            <label class="custom-control custom-checkbox">
+                                                                                <input type="hidden" name="compensate_for_text" value="0" />
+                                                                                <input type="checkbox" class="custom-control-input" name="compensate_for_text" value="1" <?php if(isset($job->compensate_for_text) && $job->compensate_for_text == 1) { ?>checked<?php } ?>>
+                                                                                <span class="custom-control-indicator"></span>
+                                                                                <span class="custom-control-description">Compensate for text on artwork footer</span>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!--/span-->
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6"> </div>
+                                                    <div class="form-actions">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="row">
+                                                                    <div class="col-md-offset-3 col-md-9">
+                                                                        <button type="submit" class="btn btn-success">Save</button>
+                                                                        <button type="button" onclick="location.href='/presto/jobs/';" class="btn btn-default">Cancel</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6"> </div>
+                                                        </div>
+                                                    </div>
+                                                </section>
+                                            <section id="section-bar-2">
+
+                                                <div class="col-sm-12 ol-md-12 col-xs-12">
+                                                    <div class="white-box">
+
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th></th>
+                                                                    <th>Filename</th>
+                                                                    <th>Created Date</th>
+                                                                    <th>Filesize</th>
+                                                                    <th class="text-nowrap">Action</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+
+                                                                <?php foreach( $outputs as $output ){ ?>
+                                                                    <tr>
+                                                                        <td></td>
+                                                                        <td><?php echo $output->name; ?></td>
+                                                                        <td><?php echo $output->datetime ?></td>
+                                                                        <td><?php echo $output->size; ?></td>
+                                                                        <td class="text-nowrap">
+                                                                            <button class="clean" name="download" value="<?php echo $output->id; ?>" data-toggle="tooltip" data-original-title="Download"> <i class="fa fa-download text-success"></i> </button>
+                                                                        </td>
+                                                                    </tr>
+                                                                <?php } ?>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </section>
-                                </div><!-- /content -->
-                            </div>
-                </section>
+
+                                            </section>
+                                            <script>
+                                                var phpVars = {
+                                                    personal: 0,
+                                                    activeTab: "",
+                                                };
+                                            </script>
+                                        </div><!-- /content -->
+                                    </div>
+                                </div>
+                            </div><!-- /tabs -->
+                        </section>
 
 
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
+
     <!--./row-->
             <?php if( isset($job->id) ) { ?>
         <div class="row">

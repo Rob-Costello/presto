@@ -19,7 +19,11 @@
                     <div class="row">
                         <h4 class="card-title col-sm-9">User Management</h4>
                         <div class="button-box col-sm-3">
+<<<<<<< HEAD
                             <button class="btn btn-info waves-effect waves-light" style="float: right;" onclick="location.href='add/';"> <i class="fa fa-plus m-r-5"></i> <span>Create New User</span></button>
+=======
+                            <button class="btn btn-info waves-effect waves-light" style="float: right;" onclick="location.href='#';"> <i class="fa fa-plus m-r-5"></i> <span>Create New User</span></button>
+>>>>>>> 720498cd4720d9beaf4f8d915a4b6a5e0b62ab6c
                         </div>
                     </div>
                     <div class="table-responsive m-t-40">
@@ -64,4 +68,8 @@
         </div>
     </div>
     <!-- /.container-fluid -->
+<<<<<<< HEAD
 <?php $this->load->view('includes/footer.php'); ?>
+=======
+<?php $this->load->view('includes/footer.php'); ?>
+>>>>>>> 720498cd4720d9beaf4f8d915a4b6a5e0b62ab6c

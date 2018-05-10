@@ -1,5 +1,5 @@
 .login-register {
-  background: url('/qph/images/login-background.jpg') no-repeat center center / cover !important;
+  background: url('/images/login-background.jpg') no-repeat center center / cover !important;
 }
 
 .logo b {
@@ -327,4 +327,8 @@ table.dataTable thead .sorting:after {
 
 .paginate_button:hover a{
   color: #fff !important;
+}
+
+button.clean{
+  border: none;
 }
