@@ -210,6 +210,9 @@ class jobs extends CI_Controller{
         //save and generate output
 
         $jobModel->output21Up( $str, $jobID, $job->filename);
+        $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+        header('Location: ' . WP_SITEURL . '/presto/jobs/view/'.$jobID.'/');
 
     }
 
