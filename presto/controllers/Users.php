@@ -13,6 +13,7 @@ class users extends CI_Controller{
         $this->load->model('messages');
         $this->load->library('ion_auth');
         $this->load->model('usersModel');
+        $this->load->model('jobsModel');
         $this->login->login_check_force();
         $this->user = $this->ion_auth->user()->row();
         $this->load->library(array('ion_auth','form_validation'));
