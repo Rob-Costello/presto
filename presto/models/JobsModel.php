@@ -87,6 +87,65 @@ class jobsModel extends CI_Model
 
     }
 
+    function getOutput( $id ){
+
+        $this->db->order_by('datetime', 'DESC');
+        $this->db->join('presto_users', 'presto_users.id = presto_jobs_outputs.user_id');
+        $query = $this->db->get_where('presto_jobs_outputs', 'job_id = ' . $id );
+        return $query->result();
+
+    }
+
+    function downloadOutputByID( $id ){
+
+        $this->load->helper('download');
+        $output = $this->getOutput($id);
+        force_download($output[0]->full_path, NULL);
+
+    }
+
+    function uploadPath( $uploadsPath, $jobID ){
+
+        $fullPath = $uploadsPath . $jobID . '/';
+
+        if(!is_dir($fullPath)) {
+            mkdir($fullPath);
+            chmod($fullPath, 0777);
+            mkdir($fullPath.'rendered/');
+            chmod($fullPath.'rendered/', 0777);
+            mkdir($fullPath.'outputs/');
+            chmod($fullPath.'outputs/', 0777);
+        }
+        return $fullPath;
+
+    }
+
+    function output21Up( $pdfContent, $jobID, $jobName){
+
+        $this->load->helper('download');
+        $path = $this->uploadPath($this->config->item('upload_path'),$jobID );
+        $pdfName = $jobName . '-' . date("Y-m-d h:i:sa") . '.pdf';
+        $fullPath = $path.'outputs/'. $pdfName;
+
+        file_put_contents($fullPath, $pdfContent);
+
+        $data = array(
+            'name' => $pdfName,
+            'type' => 'application/pdf',
+            'path' => $path.'outputs/',
+            'full_path' => $fullPath,
+            'ext' => '.pdf',
+            'size' => filesize($fullPath),
+            'job_id' => $jobID,
+            'user_id' => $this->user->id
+        );
+
+        $this->db->insert('presto_jobs_outputs', $data);
+
+        //force_download($this->config->item('upload_path').'organised-out.pdf', NULL);
+
+    }
+
     function artworkToPDF($fileData){
 //        $fileData['full_path'];
 //        $pdf = new Spatie\PdfToImage\Pdf($pathToPdf);

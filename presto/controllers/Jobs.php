@@ -87,8 +87,15 @@ class jobs extends CI_Controller{
 
         if( !empty($_POST) ) {
 
-            $job->updateJob($this->input->post(), $jobID);
+            if( isset( $_POST['download'] ) ){
 
+                $job->downloadOutputByID($this->input->post('download'));
+
+            } else {
+
+                $job->updateJob($this->input->post(), $jobID);
+
+            }
         }
 
         if( $action !== null ){
@@ -97,7 +104,7 @@ class jobs extends CI_Controller{
 
         }
 
-        $config['upload_path'] = $this->uploadPath($this->config->item('upload_path'),$jobID );
+        $config['upload_path'] = $job->uploadPath($this->config->item('upload_path'),$jobID );
         $config['allowed_types'] = $this->config->item('allowed_types');
         $config['max_size'] = $this->config->item('max_size');
         $this->load->library('upload', $config);
@@ -119,6 +126,7 @@ class jobs extends CI_Controller{
 
         $data['job'] = $job->getJob( $jobID );
         $data['artwork'] = $job->getArtwork( $jobID );
+        $data['outputs'] = $job->getOutput( $jobID );
         $data['user'] = $this->user;
         $data['title'] = 'Jobs';
         $data['nav'] = 'jobs';
@@ -131,9 +139,11 @@ class jobs extends CI_Controller{
 
         $this->load->model('pdfModel');
         $this->load->model('artworkModel');
-        $this->load->helper('download');
 
+        $jobModel = new JobsModel();
         $arkworkModel = new artworkModel();
+
+        $job = $jobModel->getJob($jobID);
 
         $jobArtwork = $arkworkModel->getJobArtworkByID($jobID);
         $file = $jobArtwork['data'][0]->path . 'rendered/' . $jobArtwork['data'][0]->raw_name . '.jpg';
@@ -197,24 +207,9 @@ class jobs extends CI_Controller{
 
         $str=str_replace($pdfFrontPlacementArray, $imageFrontPlacementArray, $str);
 
-        //generate output
-        file_put_contents($this->config->item('upload_path').'organised-out.pdf', $str);
-        force_download($this->config->item('upload_path').'organised-out.pdf', NULL);
+        //save and generate output
 
-
-    }
-
-    function uploadPath( $uploadsPath, $jobID ){
-
-        $fullPath = $uploadsPath . $jobID . '/';
-
-        if(!is_dir($fullPath)) {
-            mkdir($fullPath);
-            chmod($fullPath, 0777);
-            mkdir($fullPath.'rendered/');
-            chmod($fullPath.'rendered/', 0777);
-        }
-        return $fullPath;
+        $jobModel->output21Up( $str, $jobID, $job->filename);
 
     }
 
