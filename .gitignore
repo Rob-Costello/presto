@@ -25,6 +25,7 @@
 *.log
 *.sql
 *.sqlite
+presto/logs/*
 
 # OS generated files #
 ######################
@@ -56,3 +57,6 @@ wordpress/config/master-config.php
 
 # Wordpress #
 web/wp-content/plugins/*
+
+# Presto #
+presto/uploads/*
