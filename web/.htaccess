@@ -2,8 +2,6 @@
 RewriteEngine On
 RewriteBase /
 
-RewriteRule ^$ /presto [L]
-
 RewriteCond %{HTTPS} off
 RewriteCond %{HTTP_HOST} ^plasticcardfactory\.hyperstage\.co\.uk [NC]
 RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
